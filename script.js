@@ -21,7 +21,7 @@ const Questions =[
                      {answer:"3", correct: true },
                     ]},
                  ]
-/////////elemento global ///////////////////
+/////////elemento global /////////////////
 const $Body = document.body;
 StartQuestions()
   
