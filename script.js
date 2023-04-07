@@ -1,6 +1,4 @@
-
 ////array de perguntas//////
-
 const Questions =[ 
                    {question:"1+0", 
                     answers:[
@@ -23,7 +21,8 @@ const Questions =[
                  ]
 /////////elemento global /////////////////
 const $Body = document.body;
-const currentQuestion = 0
+let currentQuestion = 0
+
 StartQuestions()
   
 function StartQuestions (){
@@ -37,7 +36,7 @@ $BtnStartQuestion.addEventListener("click" ,() => Question() )
                  } 
 
 
-
+////////////fuçao criadora de questoes /////////
                
 function Question(){
   const Question = Questions[currentQuestion]
@@ -51,12 +50,27 @@ function Question(){
     let contentAnswer= document.createTextNode(answer.answer) 
     $Body.appendChild($BtnAnswer)
     $BtnAnswer.appendChild(contentAnswer)
+    $BtnAnswer.addEventListener( "click" ,()=>{ NextQuestion() 
+      
+    })
   })
-
+ 
 
 }
 
+////////função chama a proxima questao da lista /////
 
-//
+function NextQuestion(){
+  currentQuestion++
+  if(currentQuestion<=Questions.length){
+  
+    Question()
+  
+  }else{
+ 
+  }
+}
+
+
 
 
