@@ -21,5 +21,22 @@ const Questions =[
                      {answer:"3", correct: true },
                     ]},
                  ]
+/////////elemento global ///////////////////
+const $Body = document.body;
+StartQuestions()
+  //////////
+function StartQuestions (){
+  
+ 
+  const $BtnStartQuestion    = document.createElement('button')
+  const contentStartQuestion = document.createTextNode("START") 
+  document.body.appendChild($BtnStartQuestion)
+$BtnStartQuestion.appendChild(contentStartQuestion)
+$BtnStartQuestion.addEventListener("click" ,() => Question() )
+                 } 
 
                  
+
+//
+
+
