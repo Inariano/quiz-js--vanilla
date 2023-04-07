@@ -23,6 +23,7 @@ const Questions =[
                  ]
 /////////elemento global /////////////////
 const $Body = document.body;
+const currentQuestion = 0
 StartQuestions()
   
 function StartQuestions (){
@@ -35,6 +36,25 @@ $BtnStartQuestion.appendChild(contentStartQuestion)
 $BtnStartQuestion.addEventListener("click" ,() => Question() )
                  } 
 
+
+
+               
+function Question(){
+  const Question = Questions[currentQuestion]
+
+  const $DivQuestion = document.createElement('div')
+  const contentQuestion = document.createTextNode(Question.question)
+  $Body.appendChild($DivQuestion)
+  $DivQuestion.appendChild(contentQuestion)
+  Question.answers.forEach(answer => {
+    let $BtnAnswer = document.createElement('button')
+    let contentAnswer= document.createTextNode(answer.answer) 
+    $Body.appendChild($BtnAnswer)
+    $BtnAnswer.appendChild(contentAnswer)
+  })
+
+
+}
 
 
 //
