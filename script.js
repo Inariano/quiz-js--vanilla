@@ -24,7 +24,7 @@ const Questions =[
 /////////elemento global ///////////////////
 const $Body = document.body;
 StartQuestions()
-  //////////
+  
 function StartQuestions (){
   
  
@@ -35,7 +35,7 @@ $BtnStartQuestion.appendChild(contentStartQuestion)
 $BtnStartQuestion.addEventListener("click" ,() => Question() )
                  } 
 
-                 
+
 
 //
 
