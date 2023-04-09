@@ -62,15 +62,24 @@ function Question(){
 
 function NextQuestion(){
   currentQuestion++
-  if(currentQuestion<=Questions.length){
+  if(currentQuestion<Questions.length){
   
     Question()
   
   }else{
- 
+    Finish() 
   }
 }
+//////////função finalizar ou reiniciar //////////
+function Finish(){
+  const $BtnFinish = document.createElement('button')
+  const contentFinish = document.createTextNode('RESTART')
 
+  $Body.appendChild($BtnFinish)
+  $BtnFinish.appendChild(contentFinish)
+
+  $BtnFinish.addEventListener('click',() => location.reload())
+}
 
 
 
