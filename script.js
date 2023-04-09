@@ -20,43 +20,69 @@ const Questions =[
                     ]},
                  ]
 /////////elemento global /////////////////
-const $Body = document.body;
+const $HTML = document.body;
+
 let currentQuestion = 0
 
+/////////função de inicio do quiz 
 StartQuestions()
   
-function StartQuestions (){
-  
- 
-  const $BtnStartQuestion    = document.createElement('button')
-  const contentStartQuestion = document.createTextNode("START") 
-  document.body.appendChild($BtnStartQuestion)
-$BtnStartQuestion.appendChild(contentStartQuestion)
-$BtnStartQuestion.addEventListener("click" ,() => Question() )
-                 } 
+function 
+  StartQuestions ()
+   { 
+     const $Body = document.createElement('main');
+      $HTML.appendChild($Body)
+
+     const $BtnStartQuestion    = document.createElement('button')
+     const contentStartQuestion = document.createTextNode("START")
+
+       $Body.appendChild($BtnStartQuestion)
+       $BtnStartQuestion.appendChild(contentStartQuestion)
+
+         $BtnStartQuestion.addEventListener("click" ,() => 
+           {
+         
+            
+             Question()  
+             $Body.style.display = "none" 
+             
+         
+        
+            } )
+   } 
 
 
-////////////fuçao criadora de questoes /////////
+////////////funçao criadora de questoes /////////
                
-function Question(){
-  const Question = Questions[currentQuestion]
+function 
+   Question()
+   {
+     const Question = Questions[currentQuestion]
+     const $Body = document.createElement('main');
+     $HTML.appendChild($Body)
+     const $DivQuestion = document.createElement('div')
+     let contentQuestion = document.createTextNode(Question.question)
 
-  const $DivQuestion = document.createElement('div')
-  const contentQuestion = document.createTextNode(Question.question)
-  $Body.appendChild($DivQuestion)
-  $DivQuestion.appendChild(contentQuestion)
-  Question.answers.forEach(answer => {
-    let $BtnAnswer = document.createElement('button')
-    let contentAnswer= document.createTextNode(answer.answer) 
-    $Body.appendChild($BtnAnswer)
-    $BtnAnswer.appendChild(contentAnswer)
-    $BtnAnswer.addEventListener( "click" ,()=>{ NextQuestion() 
-      
-    })
-  })
+       $Body.appendChild($DivQuestion)
+       $DivQuestion.appendChild(contentQuestion)
+
+       Question.answers.forEach(answer => 
+        {
+          let $BtnAnswer = document.createElement('button')
+          let contentAnswer= document.createTextNode(answer.answer) 
+
+           $Body.appendChild($BtnAnswer)
+           $BtnAnswer.appendChild(contentAnswer)
+             $BtnAnswer.addEventListener( "click" ,()=>
+              { NextQuestion() 
+                $Body.style.display = "none" 
+              }
+                                        )
+         }
+                                  )
  
 
-}
+     }
 
 ////////função chama a proxima questao da lista /////
 
@@ -72,13 +98,36 @@ function NextQuestion(){
 }
 //////////função finalizar ou reiniciar //////////
 function Finish(){
+
+  const $Body = document.createElement('main');
+  $HTML.appendChild($Body)
+  const $BtnFinishTry = document.createElement('button')
+  const contentFinishTry = document.createTextNode('try again')
   const $BtnFinish = document.createElement('button')
   const contentFinish = document.createTextNode('RESTART')
 
   $Body.appendChild($BtnFinish)
   $BtnFinish.appendChild(contentFinish)
+  $Body.appendChild($BtnFinishTry)
+  $BtnFinishTry.appendChild(contentFinishTry)
 
-  $BtnFinish.addEventListener('click',() => location.reload())
+  currentQuestion=0
+  
+  $BtnFinish.addEventListener('click',() => {
+    
+   
+    StartQuestions()
+    $Body.style.display = "none" 
+   
+  })
+
+  $BtnFinishTry.addEventListener('click',() => {
+    
+   
+  Question()
+    $Body.style.display = "none" 
+   
+  })
 }
 
 
