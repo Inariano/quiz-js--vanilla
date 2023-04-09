@@ -1,32 +1,66 @@
 ////array de perguntas//////
 const Questions =[ 
-                   {question:"1+0", 
+                   {question:"1+10", 
                     answers:[
-                     {answer:"1", correct: true },
+                     {answer:"1", correct: false },
                      {answer:"2", correct: false },
-                     {answer:"3", correct: false },
+                     {answer:"11", correct: true },
                     ]},
-                   {question:"1+1", 
+                   {question:"1+11", 
                     answers:[
                      {answer:"1", correct: false},
-                     {answer:"2", correct: true  },
-                     {answer:"3", correct: false},
+                     {answer:"2", correct: false },
+                     {answer:"12", correct: true},
                     ]},
                    {question:"1+2", 
                     answers:[
                      {answer:"1", correct: false},
                      {answer:"2", correct: false },
-                     {answer:"3", correct: true },
+                     {answer:"3", correct: true }
+                    ]},
+                     {question:"1+3", 
+                    answers:[
+                     {answer:"1", correct: false},
+                     {answer:"2", correct: false },
+                     {answer:"4", correct: true},
+                    ]},
+                   {question:"1+5", 
+                    answers:[
+                     {answer:"1", correct: false},
+                     {answer:"2", correct: false  },
+                     {answer:"6", correct: true},
+                    ]},
+                   {question:"1+6", 
+                    answers:[
+                     {answer:"1", correct: false},
+                     {answer:"2", correct: false },
+                     {answer:"7", correct: true },
                     ]},
                  ]
-/////////elemento global /////////////////
+/////////elementos globais /////////////////
+       //---elemento HTML
 const $HTML = document.body;
 
+       //---contador 
 let currentQuestion = 0
+
+       //---Embaralha  perguntas  aleatóriamente.
+let randomQuestions=Questions.sort(() => Math.random() - 0.5)
+
+//---------fim dos elementos globais ----------
+/////////randomizar perguntas  e questoes
+function RandomQuestions()
+{
+ randomQuestions = Questions.sort(() => Math.random() - 0.5)
+    randomQuestions.forEach(question =>{question.answers.sort(() => Math.random() - 0.5)})
+}
+
+RandomQuestions()
 
 /////////função de inicio do quiz 
 StartQuestions()
-  
+
+
 function 
   StartQuestions ()
    { 
@@ -57,7 +91,11 @@ function
 function 
    Question()
    {
-     const Question = Questions[currentQuestion]
+     
+    
+
+
+     const Question = randomQuestions[currentQuestion]
      const $Body = document.createElement('main');
      $HTML.appendChild($Body)
      const $DivQuestion = document.createElement('div')
@@ -74,6 +112,7 @@ function
            $Body.appendChild($BtnAnswer)
            $BtnAnswer.appendChild(contentAnswer)
              $BtnAnswer.addEventListener( "click" ,()=>
+             
               { NextQuestion() 
                 $Body.style.display = "none" 
               }
@@ -88,7 +127,7 @@ function
 
 function NextQuestion(){
   currentQuestion++
-  if(currentQuestion<Questions.length){
+  if(currentQuestion<randomQuestions.length){
   
     Question()
   
@@ -97,7 +136,8 @@ function NextQuestion(){
   }
 }
 //////////função finalizar ou reiniciar //////////
-function Finish(){
+function Finish()
+{
 
   const $Body = document.createElement('main');
   $HTML.appendChild($Body)
@@ -110,9 +150,10 @@ function Finish(){
   $BtnFinish.appendChild(contentFinish)
   $Body.appendChild($BtnFinishTry)
   $BtnFinishTry.appendChild(contentFinishTry)
-
+    RandomQuestions()
   currentQuestion=0
-  
+ 
+    
   $BtnFinish.addEventListener('click',() => {
     
    
@@ -121,13 +162,11 @@ function Finish(){
    
   })
 
-  $BtnFinishTry.addEventListener('click',() => {
-    
-   
+  $BtnFinishTry.addEventListener('click',() => 
+  {
   Question()
     $Body.style.display = "none" 
-   
-  })
+   })
 }
 
 
